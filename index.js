@@ -77,6 +77,7 @@ function render() {
     gameBoard.innerHTML = ''
     renderDino(gameBoard)
     renderFood(gameBoard)
+    renderLives(gameBoard)
 
 }
 
@@ -85,10 +86,27 @@ function checkDeath() {
     gameOver = lives === 0
 }
 
+// loseLife(): subtract one life
 function loseLife() {
     lives --
 }
 
+// renderLives(gameBoard): render the dino's lives
+//  input: gameBoard -> html element : div where the game renders 
+function renderLives(gameBoard) {
+    for(let i = 0; i < lives; i++) {
+        const lifeIMG = document.createElement('IMG')
+
+        // Set all attributes
+        lifeIMG.setAttribute('src', './assets/heart.png')
+        lifeIMG.style.gridRowStart = 1
+        lifeIMG.style.gridColumnStart = GRID_SIZE - (i + 1)
+        lifeIMG.classList.add('lives')
+
+        // Append the segment to the board
+        gameBoard.appendChild(lifeIMG)
+    }
+}
 /*
 =====================================================
                     dino.js
