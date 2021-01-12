@@ -245,10 +245,10 @@ document.addEventListener('touchmove', evt => {
     let xUp = evt.touches[0].clientX                                  
 
     // Left swipe
-    if ((xDown - xUp) > 0) {
+    if ((xDown - xUp) > 0 && dinoXPosition > 0) {
         inputDirection = {x: -1, d:'L'}
     // Right swipe
-    } else {
+    } else if (dinoXPosition < GRID_SIZE - 2){
         inputDirection = {x: 1, d:'R'}
     }                                                                   
 
@@ -260,10 +260,14 @@ document.addEventListener('touchmove', evt => {
 window.addEventListener('keydown', e => {
     switch(e.key) {
         case 'ArrowLeft':
-            inputDirection = {x: -1, d:'L'}
+            if(dinoXPosition > 0) {
+                inputDirection = {x: -1, d:'L'}
+            }
             break
         case 'ArrowRight':
-            inputDirection = {x: 1, d:'R'}
+            if(dinoXPosition < GRID_SIZE - 2) {
+                inputDirection = {x: 1, d:'R'}
+            }
             break
     }
 })
