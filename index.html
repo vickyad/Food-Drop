@@ -6,10 +6,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel = "stylesheet" href = "styles.css">
-        <script src = "index.js" defer></script>
+        <script src = "index.js" defer type="module"></script>
         <title>Food drop</title>
     </head>
-    <body data-swipe-threshold="100" data-swipe-timeout="250">
+    <body>
+        <dialog open id="restart-dialog">
+            <p> Oh não! O Dino ficou sem vidas!</p>
+            <p> Deseja jogar novamente? </p>
+            <button id="cancel" type="reset">Não</button>
+            <button id="confirm">Sim!</button>
+        </dialog>
+
         <div id="score-board"></div>
         <div id="game-board"></div>
     </body>
