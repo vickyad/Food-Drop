@@ -83,9 +83,9 @@ export function renderLives(gameBoard) {
 function getRandomFoodPosition() {
     let newFoodPosition
 
-    while(newFoodPosition == null){
+    while(newFoodPosition == null || newFoodPosition.x > GRID_SIZE){
         newFoodPosition = {
-            x: Math.floor(Math.random() * GRID_SIZE) + 1, y: 1, image: getRandomImage()
+            x: Math.floor(Math.random() * GRID_SIZE) + 2, y: 1, image: getRandomImage()
         }
     }
 
