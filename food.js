@@ -1,4 +1,7 @@
+/* --> Imports <-- */
 import {foodAte} from './dino.js'
+
+
 /* --> Constants <-- */
 // Board
 const GRID_SIZE = 18
@@ -9,6 +12,7 @@ let foodList = [getRandomFoodPosition()]
 // Score
 export let score = 0
 export let lives = 3
+
 
 /* --> Functions <-- */
 // updateFood(): moves the food and if the food was ate the score is updated
@@ -46,33 +50,11 @@ export function renderFood(gameBoard) {
     })
 }
 
-// getRandomFoodPosition(): get a random x position for the food
-//  output: newFooPosition -> { x , y } : the position of the new food
-function getRandomFoodPosition() {
-    let newFoodPosition
-
-    while(newFoodPosition == null){
-        newFoodPosition = {
-            x: Math.floor(Math.random() * GRID_SIZE) + 1, y: 1, image: getRandomImage()
-        }
-    }
-
-    return newFoodPosition
-}
-
-function getRandomImage() {
-    let number = Math.floor(Math.random() * 10 + 1)
-
-    return `./assets/food_${number}.png`
-}
-
+// newFood(): generate a new food and add to the food array
 export function newFood() {
     foodList.push(getRandomFoodPosition())
 }
 
-function removeFood() {
-    foodList.shift()
-}
 
 // loseLife(): subtract one life
 export function loseLife() {
@@ -94,4 +76,31 @@ export function renderLives(gameBoard) {
         // Append the segment to the board
         gameBoard.appendChild(lifeIMG)
     }
+}
+
+// getRandomFoodPosition(): get a random x position for the food
+//  output: newFooPosition -> { x , y } : the position of the new food
+function getRandomFoodPosition() {
+    let newFoodPosition
+
+    while(newFoodPosition == null){
+        newFoodPosition = {
+            x: Math.floor(Math.random() * GRID_SIZE) + 1, y: 1, image: getRandomImage()
+        }
+    }
+
+    return newFoodPosition
+}
+
+// getRandomImage(): get a random image of food of a selection
+//  output: string : directory of the image selected
+function getRandomImage() {
+    let number = Math.floor(Math.random() * 10 + 1)
+
+    return `./assets/food_${number}.png`
+}
+
+// removeFood(): remove the first food of the array
+function removeFood() {
+    foodList.shift()
 }

@@ -39,8 +39,6 @@ function main(currentTime) {
         cancelButton.addEventListener('click', () => {
             restartDialog.close()
         })
-
-        console.log('perdeu, otario')
         return
     } else {
         window.requestAnimationFrame(main)
@@ -48,9 +46,10 @@ function main(currentTime) {
         const secondsPassed = (currentTime - lastRender) / 1000     // dividir por 1000 dá o resultado em segundos
         const foodTimeVerification = (currentTime - lastFoodGeneration) / 1000
 
-        // Verify if the time passed reach the interval
+        // Verify if the time passed reach the interval to update the board
         if(secondsPassed < (1 / SPEED)) {
             return
+        // Verify if the time passed reach the interval to create a new food
         } else if( foodTimeVerification > 12 * (1 / SPEED)) {
             lastFoodGeneration = currentTime
             newFood()
@@ -63,14 +62,14 @@ function main(currentTime) {
     }
 }
 
-// update(): update the food and the snake if necessary
+// update(): update the dino and food positions if necessary
 function update() {
     updateDino()
     updateFood()
     checkDeath()
 }
 
-// render(): render the snake, the food and the current score
+// render(): render the dino, it's lives, the food and the current score
 function render() {
     scoreBoard.innerHTML = `<p>${score}</p>`
     gameBoard.innerHTML = ''
@@ -80,7 +79,7 @@ function render() {
 
 }
 
-// checkDeath(): verify if some condition of game over was reached
+// checkDeath(): verify if the condition of game over was reached
 function checkDeath() {
     gameOver = lives === 0
 }

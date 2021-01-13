@@ -1,4 +1,5 @@
 /* --> Constants <-- */
+// General constants
 let inputDirection = {x: 0, d:'N'}
 let lastInputDirection = {x: 0, d:'N'}
 
@@ -44,6 +45,7 @@ window.addEventListener('keydown', e => {
             break
     }
 })
+
 
 /* --> Functions <-- */
 // getInputDirection(): gets the head direction based on the user moves

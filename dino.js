@@ -17,8 +17,10 @@ export function updateDino() {
     const inputDirection = getInputDirection()
 
     if(inputDirection){
-        if((inputDirection.d === 'L' && dinoXPosition > 0) || (inputDirection.d === 'R' && dinoXPosition < GRID_SIZE - 2))
-        dinoXPosition += inputDirection.x
+        // Update the position if the dino don't fall off the board
+        if((inputDirection.d === 'L' && dinoXPosition > 0) || (inputDirection.d === 'R' && dinoXPosition < GRID_SIZE - 2)){
+            dinoXPosition += inputDirection.x
+        }
     }
 }
 
